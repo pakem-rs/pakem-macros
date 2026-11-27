@@ -207,24 +207,6 @@ pub fn pakem_model_derive(input: TokenStream) -> TokenStream {
 
             if lower == "information" {
                 format!("NULL as {}", n)
-            } else if lower == "content"
-                || lower == "body"
-                || lower == "details"
-                || lower == "description"
-                || lower == "html_embed"
-                || lower == "ulasan"
-                || lower == "balasan_admin"
-                || lower == "embed"
-                || lower == "komentar"
-                || lower == "catatan"
-                || lower == "notes"
-                || lower == "message"
-                || lower == "alamat"
-                || lower == "address"
-                || lower == "excerpt"
-                || lower == "summary"
-            {
-                format!("LEFT({}, 16383) as {}", n, n)
             } else if (lower.starts_with("is_") || lower.starts_with("has_")) && is_int_or_bool {
                 format!("CAST({} AS SIGNED) as {}", n, n)
             } else if lower == "created_at"
@@ -391,11 +373,11 @@ pub fn pakem_model_derive(input: TokenStream) -> TokenStream {
                     format!("DELETE FROM {} WHERE {}", Self::TABLE, #pk_clause)
                 };
                 let sql = pool.prepare_sql(&sql);
-                sqlx::query(&sql)
+                let res = sqlx::query(&sql)
                     .bind(id)
                     .execute(&pool.pool)
                     .await?;
-                Ok(true)
+                Ok(res.rows_affected() > 0)
             }
         }
 

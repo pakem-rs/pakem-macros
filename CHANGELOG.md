@@ -8,6 +8,10 @@ Format pencatatan mengacu pada [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [1.0.5] - 2026-11-27
 
+### 🐛 Perbaikan Bug & Keandalan Macro
+- **Akurasi `Model::delete()` & `destroy()`**: Mengembalikan `Ok(res.rows_affected() > 0)` alih-alih selalu `Ok(true)` saat baris tidak ditemukan.
+- **Tanpa Pemotongan Teks (`LEFT(..., 16383)`)**: Menghapus pemotongan otomatis 16.383 karakter pada kolom teks panjang (`content`, `body`, `description`, `message`, dsb.) agar data utuh.
+
 ### 🦀 Rust 2024 Edition Compatibility & Package Rename
 - Penggantian nama package crates.io dari `pakem_macros` menjadi `pakem-macros` agar konsisten menggunakan tanda hubung (`-`) seperti crate ekosistem Pakem lainnya (`pakem-blade`, `pakem-live`, `indonesian-script`).
 - Migrasi manifest ke Rust 2024 Edition (`edition = "2024"`).
