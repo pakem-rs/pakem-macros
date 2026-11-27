@@ -1,25 +1,26 @@
-# 🔮 Lumina Macros (`lumina_macros`)
+# 🔮 Pakem Macros (`pakem_macros`)
 
 > **"Look like Laravel, Run at Rust Speed."**  
-> *Procedural macros powering Lumina Framework — Model ORM derivation, active record methods, and human-readable form validation.*
+> *Procedural macros powering Pakem Framework — Model ORM derivation, active record methods, declarative form validation, and routing.*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![Rust](https://img.shields.io/badge/rust-2021%20edition-orange.svg)](https://www.rust-lang.org)
-[![Lumina Framework](https://img.shields.io/badge/ecosystem-Lumina%20Framework-blue.svg)](https://github.com/lumina-java/framework)
+[![Crates.io](https://img.shields.io/crates/v/pakem_macros.svg)](https://crates.io/crates/pakem_macros)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Rust 2024](https://img.shields.io/badge/Rust-2024_Edition-orange.svg)](https://www.rust-lang.org)
+[![Pakem Framework](https://img.shields.io/badge/ecosystem-Pakem%20Framework-purple.svg)](https://github.com/pakem-rs/framework)
 
 ---
 
 ## 🌟 Fitur Utama
 
-`lumina_macros` menyediakan makro prosedural (*procedural macros*) yang membebaskan pengembang dari penulisan kode repetitif (*boilerplate*):
+`pakem_macros` menyediakan makro prosedural (*procedural macros*) yang membebaskan pengembang dari penulisan kode repetitif (*boilerplate*):
 
-1. **`#[derive(LuminaModel)]`**:
+1. **`#[derive(PakemModel)]`**:
    - Membangkitkan implementasi trait `Model` secara otomatis.
    - Menyediakan fungsi CRUD statis dan instance: `find()`, `all()`, `create()`, `save()`, `delete()`, `paginate()`.
    - Menghubungkan model ke **Fluent Query Builder** (`User::query(db)`).
-   - Mendukung kustomisasi tabel (`#[table("nama_tabel")]`), primary key kustom (`#[primary_key("id")]`), dan mapping nama kolom SQL.
+   - Mendukung kustomisasi tabel (`#[table("nama_tabel")]`), primary key kustom (`#[primary_key("id")]`), dan relasi deklaratif `has_many!`, `belongs_to!`, `belongs_to_many!`.
 
-2. **`#[lumina_form]`**:
+2. **`#[pakem_form]`**:
    - Validasi form deklaratif dengan sintaks yang ekspresif ala Laravel: `#[rule("required|email|min:3|max:50")]`.
    - Mengubah aturan teks secara otomatis menjadi validator bawaan tanpa konfigurasi manual yang berbelit-belit.
 
@@ -31,25 +32,25 @@ Tambahkan dependensi ke berkas `Cargo.toml` Anda:
 
 ```toml
 [dependencies]
-lumina_macros = { git = "https://github.com/lumina-java/lumina-macros" }
+pakem_macros = "1.0.5"
 ```
 
-*(Catatan: Jika Anda menggunakan `lumina` atau `lumina-framework`, makro ini sudah diekspor ulang secara otomatis melalui `lumina::prelude::*`)*.
+*(Catatan: Jika Anda menggunakan `pakem` atau `pakem-framework`, makro ini sudah diekspor ulang secara otomatis melalui `pakem::prelude::*`)*.
 
 ---
 
 ## 🚀 Panduan Penggunaan
 
-### 1. Derive Model ORM (`#[derive(LuminaModel)]`)
+### 1. Derive Model ORM (`#[derive(PakemModel)]`)
 
 Cukup tambahkan derive pada struct entitas Anda:
 
 ```rust
-use lumina::prelude::*;
+use pakem::prelude::*;
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
 
-#[derive(Debug, Serialize, Deserialize, FromRow, Clone, Default, LuminaModel)]
+#[derive(Debug, Serialize, Deserialize, FromRow, Clone, Default, PakemModel)]
 #[table("users")]
 pub struct User {
     pub id: i64,
@@ -78,14 +79,14 @@ let paginator = User::paginate(req.db(), page, per_page).await?;
 
 ---
 
-### 2. Validasi Form Deklaratif (`#[lumina_form]`)
+### 2. Validasi Form Deklaratif (`#[pakem_form]`)
 
 Definisikan form input web atau REST API dengan aturan validasi deklaratif:
 
 ```rust
-use lumina_macros::lumina_form;
+use pakem_macros::pakem_form;
 
-#[lumina_form]
+#[pakem_form]
 pub struct RegisterForm {
     #[rule("required|min:3|max:50")]
     pub name: String,
@@ -121,5 +122,5 @@ Kontribusi dari komunitas sangat dinantikan!
 
 ## 📜 Lisensi
 
-Lumina Macros dirilis di bawah lisensi terbuka [MIT License](LICENSE).  
-Dikelola oleh tim pengembang [Lumina Framework](https://github.com/lumina-java/framework).
+Pakem Macros dirilis di bawah lisensi terbuka [MIT License](LICENSE).  
+Dikelola oleh tim pengembang [Pakem Framework](https://github.com/pakem-rs/framework).

@@ -1,14 +1,13 @@
 [package]
-name = "lumina_macros"
-version = "0.1.4"
-edition = "2021"
-authors = ["Slamet Sugandi <packercyber@gmail.com>"]
-description = "Procedural macros for Lumina Framework (LuminaModel ORM derive and declarative form validation)"
+name = "pakem_macros"
+version = "1.0.5"
+edition = "2024"
+description = "Procedural macros for Pakem Framework (PakemModel ORM derive, declarative form validation, and routing)"
 license = "MIT"
-repository = "https://github.com/lumina-java/lumina-macros"
-homepage = "https://github.com/lumina-java/lumina-macros"
+repository = "https://github.com/pakem-rs/framework"
+homepage = "https://pakem.my.id"
 readme = "README.md"
-keywords = ["lumina", "proc-macro", "orm", "validation", "laravel"]
+keywords = ["pakem", "proc-macro", "orm", "validation", "laravel"]
 categories = ["development-tools::procedural-macro-helpers"]
 
 [lib]
