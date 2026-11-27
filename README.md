@@ -1,9 +1,9 @@
-# 🔮 Pakem Macros (`pakem_macros`)
+# 🔮 Pakem Macros (`pakem-macros`)
 
 > **"Look like Laravel, Run at Rust Speed."**  
-> *Procedural macros powering Pakem Framework — Model ORM derivation, active record methods, declarative form validation, and routing.*
+> _Procedural macros powering Pakem Framework — Model ORM derivation, active record methods, declarative form validation, and routing._
 
-[![Crates.io](https://img.shields.io/crates/v/pakem_macros.svg)](https://crates.io/crates/pakem_macros)
+[![Crates.io](https://img.shields.io/crates/v/pakem-macros.svg)](https://crates.io/crates/pakem-macros)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust 2024](https://img.shields.io/badge/Rust-2024_Edition-orange.svg)](https://www.rust-lang.org)
 [![Pakem Framework](https://img.shields.io/badge/ecosystem-Pakem%20Framework-purple.svg)](https://github.com/pakem-rs/framework)
@@ -12,7 +12,7 @@
 
 ## 🌟 Fitur Utama
 
-`pakem_macros` menyediakan makro prosedural (*procedural macros*) yang membebaskan pengembang dari penulisan kode repetitif (*boilerplate*):
+`pakem-macros` menyediakan makro prosedural (_procedural macros_) yang membebaskan pengembang dari penulisan kode repetitif (_boilerplate_):
 
 1. **`#[derive(PakemModel)]`**:
    - Membangkitkan implementasi trait `Model` secara otomatis.
@@ -32,10 +32,10 @@ Tambahkan dependensi ke berkas `Cargo.toml` Anda:
 
 ```toml
 [dependencies]
-pakem_macros = "1.0.5"
+pakem-macros = "1.0.5"
 ```
 
-*(Catatan: Jika Anda menggunakan `pakem` atau `pakem-framework`, makro ini sudah diekspor ulang secara otomatis melalui `pakem::prelude::*`)*.
+_(Catatan: Jika Anda menggunakan `pakem` atau `pakem-framework`, makro ini sudah diekspor ulang secara otomatis melalui `pakem::prelude::_`)\*.
 
 ---
 
@@ -62,6 +62,7 @@ pub struct User {
 ```
 
 Setelah didefinisikan, struct otomatis memiliki metode ekspresif:
+
 ```rust
 // 1. Ambil data berdasarkan ID
 let user = User::find(req.db(), 1).await?;
@@ -100,6 +101,7 @@ pub struct RegisterForm {
 ```
 
 Aturan yang didukung:
+
 - `required` — Field wajib diisi dan tidak boleh kosong.
 - `email` — Format alamat surel yang valid.
 - `url` — Format URL yang valid.
@@ -111,6 +113,7 @@ Aturan yang didukung:
 ## 🤝 Berkontribusi (Contributing)
 
 Kontribusi dari komunitas sangat dinantikan!
+
 1. Fork repositori ini.
 2. Buat branch fitur (`git checkout -b feature/nama-fitur`).
 3. Jalankan pengujian (`cargo check`).

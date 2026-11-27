@@ -1,5 +1,5 @@
 [package]
-name = "pakem_macros"
+name = "pakem-macros"
 version = "1.0.5"
 edition = "2024"
 description = "Procedural macros for Pakem Framework (PakemModel ORM derive, declarative form validation, and routing)"
