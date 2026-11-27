@@ -1,4 +1,4 @@
-# 🔮 Pakem Macros (`pakem-macros`)
+# 🔮 Pakem Derive (`pakem-derive`)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pakem-rs/pakem/1.x/resources/images/logo.svg" alt="Pakem Framework Logo" width="120">
@@ -7,7 +7,7 @@
 > **"Look like Laravel, Run at Rust Speed."**  
 > _Procedural macros powering Pakem Framework — Model ORM derivation, active record methods, declarative form validation, and routing._
 
-[![Crates.io](https://img.shields.io/crates/v/pakem-macros.svg)](https://crates.io/crates/pakem-macros)
+[![Crates.io](https://img.shields.io/crates/v/pakem-derive.svg)](https://crates.io/crates/pakem-derive)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust 2024](https://img.shields.io/badge/Rust-2024_Edition-orange.svg)](https://www.rust-lang.org)
 [![Pakem Framework](https://img.shields.io/badge/ecosystem-Pakem%20Framework-purple.svg)](https://github.com/pakem-rs/framework)
@@ -36,7 +36,7 @@ Tambahkan dependensi ke berkas `Cargo.toml` Anda:
 
 ```toml
 [dependencies]
-pakem-macros = "1.0.5"
+pakem-derive = "1.0.5"
 ```
 
 _(Catatan: Jika Anda menggunakan `pakem` atau `pakem-framework`, makro ini sudah diekspor ulang secara otomatis melalui `pakem::prelude::_`)\*.
@@ -89,7 +89,7 @@ let paginator = User::paginate(req.db(), page, per_page).await?;
 Definisikan form input web atau REST API dengan aturan validasi deklaratif:
 
 ```rust
-use pakem_macros::pakem_form;
+use pakem_derive::pakem_form;
 
 #[pakem_form]
 pub struct RegisterForm {

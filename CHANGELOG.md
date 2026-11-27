@@ -13,7 +13,7 @@ Format pencatatan mengacu pada [Keep a Changelog](https://keepachangelog.com/en/
 - **Tanpa Pemotongan Teks (`LEFT(..., 16383)`)**: Menghapus pemotongan otomatis 16.383 karakter pada kolom teks panjang (`content`, `body`, `description`, `message`, dsb.) agar data utuh.
 
 ### 🦀 Rust 2024 Edition Compatibility & Package Rename
-- Penggantian nama package crates.io dari `pakem_macros` menjadi `pakem-macros` agar konsisten menggunakan tanda hubung (`-`) seperti crate ekosistem Pakem lainnya (`pakem-blade`, `pakem-live`, `indonesian-script`).
+- **Konsistensi Nama Crate (`pakem-derive`)**: Mengganti nama package crates.io menjadi `pakem-derive` agar seluruh ekosistem konsisten memakai tanda hubung (`-`).
 - Migrasi manifest ke Rust 2024 Edition (`edition = "2024"`).
 - Pembaruan dependensi `syn` (v2/v3), `quote`, dan `proc-macro2`.
 - Dukungan macro derive `PakemModel` untuk integrasi ORM mutakhir.
